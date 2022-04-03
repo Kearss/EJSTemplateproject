@@ -1,0 +1,46 @@
+<%- include("../partials/header") %>
+
+    <body>
+        <table class="table table-striped">
+            <tr>
+                <th style="text-align: center; font-size: x-large;">Name</th>
+                <th style="text-align: center; font-size: x-large;">expansion</th>
+                <th style="text-align: center; font-size: x-large;">Army Type</th>
+                <th style="text-align: center; font-size: x-large;">unique unit</th>
+                <th style="text-align: center; font-size: x-large;">unique tech</th>
+                <th style="text-align: center; font-size: x-large;">Team bonus</th>
+                <th style="text-align: center; font-size: x-large;">Civ bonus</th>
+            </tr>
+            <tr>
+                <tbody>
+                    <td style="text-align: center; font-size: large; vertical-align: middle;">
+                        <%= name %>
+                    </td>
+                    <td style="text-align: center; font-size: large; vertical-align: middle;">
+                        <%= Expansions %>
+                    </td>
+                    <td style="text-align: center; font-size: large; vertical-align: middle;">
+                        <%= army_type %>
+                    </td>
+                    <td style="text-align: center; font-size: large; vertical-align: middle;">
+                        <%= unique_unit %>
+                    </td>
+                    <td style="text-align: center; font-size: large; vertical-align: middle;">
+                        <%= unique_tech %>
+                    </td>
+                    <td style="text-align: center; font-size: large; vertical-align: middle;">
+                        <%= team_bonus %>
+                    </td>
+                    <td style="text-align: center; font-size: large; vertical-align: middle;">
+                        <%= civilization_bonus %>
+                    </td>
+                    <!td style="text-align: center;"><!img style="max-width: 50%; vertical-align: middle;"
+                            src="<%= team_bonus%>"> </!td>// jos haluan sitä kuvia
+            </tr>
+            </tbody>
+        </table>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </body>
+
+    </html>
