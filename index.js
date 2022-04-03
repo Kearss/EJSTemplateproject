@@ -1,23 +1,32 @@
-var express = require("express");
-var fs = require("fs");
-var app = express();
-var bodyParser = require("body-parser");
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
-app.set("view engine", "ejs");
-const PORT = process.env.PORT || 8080;
+const fs = require("fs");
+const express = require("express");
+const app = express();
 
-// Luodaan "aloitussivu".
-app.get("/", function (req, res){
-    // Lisätään paikallinen JSON-tiedosto muuttujaan.
-    var json = require(__dirname + "/Civ.json")
-    // Renderöidään index.ejs -tiedosto sivulle ja tuodaan mukana json-muuttujaan sijoitettu data.
-    res.render("pages/index", json);   
-})
-app.get("*", function(req, res){
-    res.send("Can't find the requested page", 404)
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.set("view engine", "ejs");
+
+const PORT = process.env.PORT || 8081;
+
+app.get("/", (req, res) => {
+  const table = makeTable;
+  res.render("pages/index", {table: table});
 });
-// Asetetaan ohjelma kuuntelemaan Herokun määrittämää porttia tai vaihtoehtoisesti porttia 8080.
-app.listen(PORT, function(){
+
+app.listen(PORT, () =>{
     console.log("Server is running!")
 });
+
+function makeTable() {
+  const guests = require("./Civ.json");
+  const guestsFormat = guests.civilizations.map(guest => (
+    `<tr><td class="tohide">${guest.id}</td><td>${guest.name}</td><td>${guest.expansion}</td><td class="tohide">${guest.army_type}</td><td>${guest.team_bonus}</td></tr>`
+  ))
+  .reduce((prevValue, curValue) => prevValue + curValue);
+
+  return (`<table class="table"><thead class="thead-dark"><tr><th class="tohide">ID</td><th>Name</th><th>Expansion</th><th class="tohide">Army type</th><th>Team Bonus</th></tr></thead><tbody>
+  ${guestsFormat}
+  </tbody></table>`);
+}
