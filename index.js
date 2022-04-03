@@ -12,10 +12,8 @@ app.get("/", function (req, res){
     // Lisätään paikallinen JSON-tiedosto muuttujaan.
     var json = require(__dirname + "/Civ.json")
     // Renderöidään index.ejs -tiedosto sivulle ja tuodaan mukana json-muuttujaan sijoitettu data.
-    res.render("pages/index", json);
-    
+    res.render("pages/index", json);   
 })
-
 app.get("*", function(req, res){
     res.send("Can't find the requested page", 404)
 });
