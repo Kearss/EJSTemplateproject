@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 8081;
 
 app.get("/", (req, res) => {
   const table = makeTable;
-  res.render("pages/index", {table: table});
+  res.render("pages/page", {table: table});
 });
 
 app.listen(PORT, () =>{
