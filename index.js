@@ -19,7 +19,7 @@ app.listen(PORT, () =>{
 
 function makeTable() {
   const Info = require("./Civ.json");
-  const infoFormat = Info.civilizations.id.map(info => (
+  const infoFormat = Info.civilizations.map(info => (
     `<tr><td class="tohide">${info.id}</td><td>${info.name}</td><td>${info.expansion}</td><td class="tohide">${info.army_type}</td><td>${info.team_bonus}</td><td>${info.civilization_bonus}</td></tr>`
   ))
   .reduce((prevValue, curValue) => prevValue + curValue);
