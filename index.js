@@ -22,11 +22,13 @@ app.listen(PORT, () =>{
 function makeTable() {
   const guests = require("./Civ.json");
   const guestsFormat = guests.civilizations.map(guest => (
-    `<tr><td class="tohide">${guest.id}</td><td>${guest.name}</td><td>${guest.expansion}</td><td class="tohide">${guest.army_type}</td><td>${guest.team_bonus}</td></tr>`
+    `<tr><td class="tohide">${guest.id}</td><td>${guest.name}</td><td>${guest.expansion}</td><td class="tohide">${guest.army_type}</td><td>${guest.team_bonus}</td><td>${guest.civilization_bonus}</td></tr>`
   ))
   .reduce((prevValue, curValue) => prevValue + curValue);
 
-  return (`<table class="table"><thead class="thead-dark"><tr><th class="tohide">ID</td><th>Name</th><th>Expansion</th><th class="tohide">Army type</th><th>Team Bonus</th></tr></thead><tbody>
+  return (`<table class="table"><thead class="thead-dark"><tr><th class="tohide">ID</td><th>Name</th><th>Expansion</th><th class="tohide">Army type</th><th>Team Bonus</th><th>Civ bonus</th></tr></thead><tbody>
   ${guestsFormat}
   </tbody></table>`);
 }
+
+
